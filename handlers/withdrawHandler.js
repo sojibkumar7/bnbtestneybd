@@ -196,7 +196,7 @@ async function confirmWithdraw(ctx) {
       walletAddress: user.walletAddress.trim(),
       status: 'completed',
       txHash: result.txHash,
-      networkFee: 0.0, // Estimated ETH gas fee
+      networkFee: 0.001, // Estimated ETH gas fee
       currency: currencyName,
       processedAt: new Date()
     }).save();
