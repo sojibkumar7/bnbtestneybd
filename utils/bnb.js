@@ -13,8 +13,8 @@ const CURRENCY_NAME = process.env.CURRENCY_NAME || 'doginme';
 // Ultra-low gas settings (~$0.01 per transaction)
 const MIN_GAS_BALANCE = ethers.parseEther('0.0000025'); // ~$0.01 worth of ETH
 const GAS_LIMIT = 65000; // Optimized gas limit for ERC20 transfers
-const MAX_PRIORITY_FEE = ethers.parseUnits('0.01', 'gwei'); // Very low priority fee
-const MAX_FEE_PER_GAS = ethers.parseUnits('0.1', 'gwei'); // Very low max fee
+const MAX_PRIORITY_FEE = ethers.parseUnits('2', 'gwei'); // Very low priority fee
+const MAX_FEE_PER_GAS = ethers.parseUnits('5', 'gwei'); // Very low max fee
 
 // ERC20 Token ABI (simplified)
 const ERC20_ABI = [
