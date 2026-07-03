@@ -1,6 +1,6 @@
 // Follow me @Airdropmanaging
 const { Markup } = require('telegraf');
-const { sendBNBTokens, isValidBNBAddress, BNB_EXPLORER, quickBalanceCheck, getBNBBalances } = require('../utils/bnb'); // FIXED IMPORT PATH
+const { sendBNBTokens, isValidBSCAddress, BNB_EXPLORER, quickBalanceCheck, getBNBBalances } = require('../utils/bnb'); // FIXED IMPORT PATH
 const Withdrawal = require('../models/Withdrawal');
 const User = require('../models/User');
 const { formatWithUSD } = require('../utils/helpers');
@@ -32,7 +32,7 @@ async function handleWithdraw(ctx) {
       );
     }
 
-    if (!isValidBNBAddress(user.walletAddress)) {
+    if (!isValidBSCAddress(user.walletAddress)) {
       return ctx.replyWithHTML(
         '❌ <b>Invalid BNB Wallet Address</b>\n\n' +
         'The address you provided is not valid. Please check:\n' +
@@ -266,6 +266,6 @@ module.exports = {
   handleWithdraw,
   confirmWithdraw,
   cancelWithdraw,
-  isValidBNBAddress,
+  isValidBSCAddress,
   pendingWithdrawals
 };
