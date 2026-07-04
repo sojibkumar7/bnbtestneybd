@@ -198,20 +198,21 @@ async function completeTask(ctx) {
     `Current balance: <b>${formatWithUSD(user.balance)}</b>`
   );
   
-  if (user.completedTasks.length === 1 && user.referredBy) {
+ if (user.completedTasks.length === 1 && user.referredBy) {
     const referrer = await User.findOne({ telegramId: user.referredBy });
+
     if (referrer) {
-      referrer.referrals.push({ 
-        userId: user.telegramId, 
-        username: user.username,
-        completed: true,
-        claimed: true,
-        completedAt: new Date(),
-        referredAt: new Date()
-      });
-      await referrer.save();
+        const refIndex = referrer.referrals.findIndex(
+            ref => ref.userId == user.telegramId
+        );
+
+        if (refIndex !== -1) {
+            referrer.referrals[refIndex].completed = true;
+            referrer.referrals[refIndex].completedAt = new Date();
+            await referrer.save();
+        }
     }
-  }
+}
   
   delete ctx.session.currentTask;
   delete ctx.session.verificationStep;
