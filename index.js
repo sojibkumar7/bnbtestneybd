@@ -675,8 +675,7 @@ bot.on('photo', async (ctx) => {
                     [`referrals.${referralIndex}.completed`]: true,
                     [`referrals.${referralIndex}.completedAt`]: new Date(),
                     [`referrals.${referralIndex}.claimed`]: true
-                  },
-                  $inc: { balance: referralBonus }
+                  }
                 }
               );
               
