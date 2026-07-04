@@ -752,7 +752,7 @@ bot.on('text', async (ctx) => {
       const walletAddress = ctx.message.text.trim();
       
       // Use Base wallet validation
-      if (!isValidBNBAddress(walletAddress)) {
+      if (!isValidBSCAddress(walletAddress)) {
         return await ctx.reply(
           '⚠️ Please enter a valid Base wallet address:\n' +
           '• Should start with 0x\n' +
