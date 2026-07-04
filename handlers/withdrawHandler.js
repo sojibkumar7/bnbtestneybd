@@ -213,13 +213,11 @@ async function confirmWithdraw(ctx) {
 
     // Remove from pending withdrawals
     pendingWithdrawals.delete(userId);
-try { 
+try {
   console.log("=== LOG CODE START ===");
-    await ctx.telegram.sendMessage("@owltopayout", "✅ Test Log");
-    console.log("Log Sent Successfully");
-} catch (err) {
-    console.error("Log Error:", err);
-}
+
+  await ctx.telegram.sendMessage(
+    "@owltopayout",
     📥 <b>New Withdrawal</b>
 
 👤 Name: ${ctx.from.first_name}
@@ -237,8 +235,10 @@ try {
       parse_mode: "HTML"
     }
   );
+
+  console.log("Log Sent Successfully");
 } catch (err) {
-  console.error("Log channel error:", err);
+  console.error("Log Error:", err);
 }
     await ctx.replyWithHTML(
       `✅ <b>Withdrawal Successful!</b>\n\n` +
