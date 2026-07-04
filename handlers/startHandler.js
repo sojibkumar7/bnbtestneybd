@@ -20,11 +20,10 @@ async function handleStart(ctx) {
       return;
     }
 
-    // Follow me @Airdropmanaging
     if (!ctx.user.profileCompleted) {
-      await collectUserData(ctx);
-      return;
-    }
+    ctx.user.profileCompleted = true;
+    await ctx.user.save();
+}
 
     // Follow me @Airdropmanaging
     await showMainMenu(ctx);
