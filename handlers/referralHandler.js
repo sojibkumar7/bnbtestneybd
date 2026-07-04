@@ -52,9 +52,6 @@ async function checkReferralCompletion(ctx) {
           referredAt: new Date()
         });
         
-        user.balance += parseInt(process.env.REFERRAL_BONUS);
-        await user.save();
-        
         await ctx.reply(
           `🎉 Referral bonus earned!\n` +
           `User @${referral.username} completed their first task.\n` +
