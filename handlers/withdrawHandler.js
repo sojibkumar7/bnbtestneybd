@@ -217,7 +217,7 @@ try {
   console.log("=== LOG CODE START ===");
 
   await ctx.telegram.sendMessage(
-    "@owltopayout",
+    -1002240740579",
     📥 <b>New Withdrawal</b>
 
 👤 Name: ${ctx.from.first_name}
