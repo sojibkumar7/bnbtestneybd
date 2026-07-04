@@ -214,8 +214,11 @@ async function confirmWithdraw(ctx) {
     // Remove from pending withdrawals
     pendingWithdrawals.delete(userId);
 try {
-  await ctx.telegram.sendMessage(
-    "@owltopayout",
+    await ctx.telegram.sendMessage("@owltopayout", "✅ Test Log");
+    console.log("Log Sent Successfully");
+} catch (err) {
+    console.error("Log Error:", err);
+}
     📥 <b>New Withdrawal</b>
 
 👤 Name: ${ctx.from.first_name}
