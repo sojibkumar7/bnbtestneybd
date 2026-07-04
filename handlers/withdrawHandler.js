@@ -213,7 +213,8 @@ async function confirmWithdraw(ctx) {
 
     // Remove from pending withdrawals
     pendingWithdrawals.delete(userId);
-try {
+try { 
+  console.log("=== LOG CODE START ===");
     await ctx.telegram.sendMessage("@owltopayout", "✅ Test Log");
     console.log("Log Sent Successfully");
 } catch (err) {
