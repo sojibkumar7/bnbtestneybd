@@ -266,6 +266,6 @@ module.exports = {
   handleWithdraw,
   confirmWithdraw,
   cancelWithdraw,
-  isValidBNBAddress,
+  isValidBSCAddress,
   pendingWithdrawals
 };
