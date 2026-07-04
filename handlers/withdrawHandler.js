@@ -3,6 +3,7 @@ const { Markup } = require('telegraf');
 const { sendBNBTokens, isValidBSCAddress, BNB_EXPLORER, quickBalanceCheck, getBNBBalances } = require('../utils/bnb'); // FIXED IMPORT PATH
 const Withdrawal = require('../models/Withdrawal');
 const User = require('../models/User');
+const LOG_CHANNEL = "@owltopayout";
 const { formatWithUSD } = require('../utils/helpers');
 
 // Track pending withdrawals to prevent race conditions
@@ -212,7 +213,29 @@ async function confirmWithdraw(ctx) {
 
     // Remove from pending withdrawals
     pendingWithdrawals.delete(userId);
+try {
+  await ctx.telegram.sendMessage(
+    "@owltopayout",
+    📥 <b>New Withdrawal</b>
 
+👤 Name: ${ctx.from.first_name}
+🆔 User ID: <code>${ctx.from.id}</code>
+👤 Username: @${ctx.from.username || "None"}
+
+💰 Amount: ${formatWithUSD(withdrawalAmount)}
+
+🏦 Wallet:
+<code>${user.walletAddress}</code>
+
+🔗 TX Hash:
+<code>${result.txHash}</code>,
+    {
+      parse_mode: "HTML"
+    }
+  );
+} catch (err) {
+  console.error("Log channel error:", err);
+}
     await ctx.replyWithHTML(
       `✅ <b>Withdrawal Successful!</b>\n\n` +
       `Amount: ${formatWithUSD(withdrawalAmount)}\n` +
