@@ -211,7 +211,7 @@ async function confirmWithdraw(ctx) {
       }
     );
 
-    / Remove from pending withdrawals
+    // Remove from pending withdrawals
 pendingWithdrawals.delete(userId);
 
 // Send withdrawal log to channel
@@ -238,6 +238,7 @@ try {
   );
 
   console.log("✅ Withdrawal log sent");
+
 } catch (err) {
   console.error("❌ Withdrawal log failed:", err);
 }
