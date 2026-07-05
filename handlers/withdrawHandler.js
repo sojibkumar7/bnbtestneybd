@@ -230,7 +230,7 @@ try {
 <code>${user.walletAddress}</code>
 
 🔗 TX Hash:
-<code>${result.txHash}</code>,`
+<code>${result.txHash}</code>`
     {
       parse_mode: "HTML",
       disable_web_page_preview: true
@@ -246,11 +246,13 @@ try {
 await ctx.replyWithHTML(
   ✅ <b>Withdrawal Successful!</b>
 
-Amount: ${formatWithUSD(withdrawalAmount)}
-Network: BNB Testnet
-TX Hash: <code>${result.txHash}</code>
+💰 Amount: ${formatWithUSD(withdrawalAmount)}
+🌐 Network: BNB Testnet
 
-View on explorer: <a href="${result.explorerUrl}">BNBScan</a>`
+🔗 TX Hash:
+<code>${result.txHash}</code>
+
+<a href="${result.explorerUrl}">View on BNBScan</a>`
 );
     
   } catch (err) {
