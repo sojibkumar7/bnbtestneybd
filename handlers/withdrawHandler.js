@@ -211,18 +211,18 @@ async function confirmWithdraw(ctx) {
       }
     );
 
-    // Remove from pending withdrawals
-    pendingWithdrawals.delete(userId);
-try {
-  console.log("=== LOG CODE START ===");
+    / Remove from pending withdrawals
+pendingWithdrawals.delete(userId);
 
+// Send withdrawal log to channel
+try {
   await ctx.telegram.sendMessage(
-    -1002240740579",
+    -1002240740579,
     📥 <b>New Withdrawal</b>
 
-👤 Name: ${ctx.from.first_name}
-🆔 User ID: <code>${ctx.from.id}</code>
+👤 Name: ${ctx.from.first_name || "Unknown"}
 👤 Username: @${ctx.from.username || "None"}
+🆔 User ID: <code>${ctx.from.id}</code>
 
 💰 Amount: ${formatWithUSD(withdrawalAmount)}
 
@@ -232,21 +232,23 @@ try {
 🔗 TX Hash:
 <code>${result.txHash}</code>,
     {
-      parse_mode: "HTML"
+      parse_mode: "HTML",
+      disable_web_page_preview: true
     }
   );
 
-  console.log("Log Sent Successfully");
+  console.log("✅ Withdrawal log sent");
 } catch (err) {
-  console.error("Log Error:", err);
+  console.error("❌ Withdrawal log failed:", err);
 }
-    await ctx.replyWithHTML(
-      `✅ <b>Withdrawal Successful!</b>\n\n` +
-      `Amount: ${formatWithUSD(withdrawalAmount)}\n` +
-      `Network: BNB Testnet\n` +
-      `TX Hash: <code>${result.txHash}</code>\n\n` +
-      `View on explorer: <a href="${result.explorerUrl}">BNBScan</a>`
-    );
+
+await ctx.replyWithHTML(
+  ✅ <b>Withdrawal Successful!</b>\n\n +
+  Amount: ${formatWithUSD(withdrawalAmount)}\n +
+  Network: BNB Testnet\n +
+  TX Hash: <code>${result.txHash}</code>\n\n +
+  View on explorer: <a href="${result.explorerUrl}">BNBScan</a>
+);
     
   } catch (err) {
     console.error('Withdrawal failed:', err);
