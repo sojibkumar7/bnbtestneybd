@@ -218,7 +218,7 @@ pendingWithdrawals.delete(userId);
 try {
   await ctx.telegram.sendMessage(
     -1002240740579,
-    📥 <b>New Withdrawal</b>
+    `📥 <b>New Withdrawal</b>
 
 👤 Name: ${ctx.from.first_name || "Unknown"}
 👤 Username: @${ctx.from.username || "None"}
@@ -230,7 +230,7 @@ try {
 <code>${user.walletAddress}</code>
 
 🔗 TX Hash:
-<code>${result.txHash}</code>,
+<code>${result.txHash}</code>,`
     {
       parse_mode: "HTML",
       disable_web_page_preview: true
@@ -244,11 +244,13 @@ try {
 }
 
 await ctx.replyWithHTML(
-  ✅ <b>Withdrawal Successful!</b>\n\n +
-  Amount: ${formatWithUSD(withdrawalAmount)}\n +
-  Network: BNB Testnet\n +
-  TX Hash: <code>${result.txHash}</code>\n\n +
-  View on explorer: <a href="${result.explorerUrl}">BNBScan</a>
+  ✅ <b>Withdrawal Successful!</b>
+
+Amount: ${formatWithUSD(withdrawalAmount)}
+Network: BNB Testnet
+TX Hash: <code>${result.txHash}</code>
+
+View on explorer: <a href="${result.explorerUrl}">BNBScan</a>`
 );
     
   } catch (err) {
