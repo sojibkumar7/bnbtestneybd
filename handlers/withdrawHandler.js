@@ -230,11 +230,11 @@ try {
 <code>${user.walletAddress}</code>
 
 🔗 TX Hash:
-<code>${result.txHash}</code>`
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true
-    }
+<code>${result.txHash}</code>`,
+{
+  parse_mode: "HTML",
+  disable_web_page_preview: true
+}
   );
 
   console.log("✅ Withdrawal log sent");
@@ -244,7 +244,7 @@ try {
 }
 
 await ctx.replyWithHTML(
-  ✅ <b>Withdrawal Successful!</b>
+  `✅ <b>Withdrawal Successful!</b>
 
 💰 Amount: ${formatWithUSD(withdrawalAmount)}
 🌐 Network: BNB Testnet
