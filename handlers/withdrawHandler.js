@@ -216,7 +216,7 @@ pendingWithdrawals.delete(userId);
 
 // Send withdrawal log to channel
 try {
-  const explorerUrl = result.explorerUrl || ${BNB_EXPLORER}/tx/${result.txHash};
+  const explorerUrl = result.explorerUrl || ${BNB_EXPLORER}/tx/${result.txHash};`
 
 await ctx.telegram.sendMessage(
   -1002240740579,
