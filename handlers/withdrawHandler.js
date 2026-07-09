@@ -216,11 +216,11 @@ pendingWithdrawals.delete(userId);
 
 // Send withdrawal log to channel
 try {
-  const explorerUrl = result.explorerUrl || `${BNB_EXPLORER}/tx/${result.txHash};`
+  const explorerUrl = result.explorerUrl || ${BNB_EXPLORER}/tx/${result.txHash};`
 
 await ctx.telegram.sendMessage(
   -1002240740579,
-  📥 <b>New Withdrawal</b>
+  `📥 <b>New Withdrawal</b>
 
 👤 Name: ${ctx.from.first_name || "Unknown"}
 👤 Username: @${ctx.from.username || "None"}
@@ -238,7 +238,7 @@ await ctx.telegram.sendMessage(
 <a href="${explorerUrl}">View on BscScan</a>
 
 🔗 Referral Link:
-https://t.me/${ctx.botInfo.username}?start=${ctx.from.id},
+`https://t.me/${ctx.botInfo.username}?start=${ctx.from.id}`
   {
     parse_mode: "HTML",
     disable_web_page_preview: true,
