@@ -237,14 +237,14 @@ await ctx.telegram.sendMessage(
 <a href="${explorerUrl}">View on BscScan</a>
 
 🔗 Referral Link:
-`https://t.me/${ctx.botInfo.username}?start=${ctx.from.id}`
+`https://t.me/${ctx.botInfo.username}?start=${ctx.from.id}
   {
     parse_mode: "HTML",
     disable_web_page_preview: true,
     reply_markup: {
       inline_keyboard: [
         [{ text: "🌐 View Transaction", url: explorerUrl }],
-        [{ text: "🚀 Referral Link", url: https://t.me/${ctx.botInfo.username}?start=${ctx.from.id} }]
+        [{ text: "🚀 Referral Link", url: `https://t.me/${ctx.botInfo.username}?start=${ctx.from.id}` }]
       ]
     }
   }
