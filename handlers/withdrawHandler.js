@@ -216,9 +216,11 @@ pendingWithdrawals.delete(userId);
 
 // Send withdrawal log to channel
 try {
-  await ctx.telegram.sendMessage(
-    -1002240740579,
-    `📥 <b>New Withdrawal</b>
+  const explorerUrl = result.explorerUrl || ${BNB_EXPLORER}/tx/${result.txHash};
+
+await ctx.telegram.sendMessage(
+  -1002240740579,
+  📥 <b>New Withdrawal</b>
 
 👤 Name: ${ctx.from.first_name || "Unknown"}
 👤 Username: @${ctx.from.username || "None"}
@@ -230,29 +232,23 @@ try {
 <code>${user.walletAddress}</code>
 
 🔗 TX Hash:
-<code>${result.txHash}</code>`,
-{
-  parse_mode: "HTML",
-  disable_web_page_preview: true
-}
-  );
-
-  console.log("✅ Withdrawal log sent");
-
-} catch (err) {
-  console.error("❌ Withdrawal log failed:", err);
-}
-
-await ctx.replyWithHTML(
-  `✅ <b>Withdrawal Successful!</b>
-
-💰 Amount: ${formatWithUSD(withdrawalAmount)}
-🌐 Network: BNB Testnet
-
-🔗 TX Hash:
 <code>${result.txHash}</code>
 
-<a href="${result.explorerUrl}">View on BNBScan</a>`
+🌐 Transaction:
+<a href="${explorerUrl}">View on BscScan</a>
+
+🔗 Referral Link:
+https://t.me/${ctx.botInfo.username}?start=${ctx.from.id},
+  {
+    parse_mode: "HTML",
+    disable_web_page_preview: true,
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "🌐 View Transaction", url: explorerUrl }],
+        [{ text: "🚀 Referral Link", url: https://t.me/${ctx.botInfo.username}?start=${ctx.from.id} }]
+      ]
+    }
+  }
 );
     
   } catch (err) {
