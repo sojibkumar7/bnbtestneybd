@@ -231,8 +231,6 @@ try {
 
 🔗 TX Hash:
 <a href="${result.explorerUrl}">View on BNBScan</a>`,
-🤖 <b>Bot Link:</b>
-`https://t.me/${ctx.botInfo.username}`,
 {
   parse_mode: "HTML",
   disable_web_page_preview: true
