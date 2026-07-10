@@ -219,7 +219,7 @@ pendingWithdrawals.delete(userId);
  const explorerUrl = `${BNB_EXPLORER}/tx/${result.txHash}`;
 
 await ctx.telegram.sendMessage(
-  process.env.LOG_CHANNEL_ID,
+  -2240740579,
   `✅ <b>New Payment Successful!</b>
 
 👤 <b>User:</b> <code>${ctx.from.id}</code>
