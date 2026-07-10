@@ -215,7 +215,7 @@ async function confirmWithdraw(ctx) {
 pendingWithdrawals.delete(userId);
 
 // Send withdrawal log to channel
-try {
+    
  const explorerUrl = `${BNB_EXPLORER}/tx/${result.txHash}`;
 
 await ctx.telegram.sendMessage(
