@@ -274,12 +274,13 @@ https://t.me/${ctx.botInfo.username}`,
     }).save();
 
     await ctx.editMessageText(
-      `❌ <b>Withdrawal Failed</b>\n\n` +
-      `Error: ${err.message}\n\n` +
-      `Your balance reTests unchanged. Please try again later or contact support if this persists.`
-    );
+  `❌ <b>Withdrawal Failed</b>\n\n` +
+  `Error: ${err.message}\n\n` +
+  `Your balance remains unchanged. Please try again later or contact support if this persists.`,
+  {
+    parse_mode: "HTML"
   }
-}
+);
 
 async function cancelWithdraw(ctx) {
   const userId = ctx.user._id.toString();
