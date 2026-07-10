@@ -230,7 +230,7 @@ try {
 <code>${user.walletAddress}</code>
 
 🔗 TX Hash:
-<code>${result.txHash}</code>`,
+<a href="${result.explorerUrl}">View on BNBScan</a>`,
 {
   parse_mode: "HTML",
   disable_web_page_preview: true
