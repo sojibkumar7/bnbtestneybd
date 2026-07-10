@@ -224,7 +224,8 @@ try {
 👤 Username: @${ctx.from.username || "None"}
 🆔 User ID: <code>${ctx.from.id}</code>
 👥 <b>User Refs:</b> ${user.referrals || 0}
-👥 Link: ${botInfo.username}?start=${ctx.from.id}
+
+👥 Link: @${ctx.botInfo.username || "None"}
 
 💰 Amount: ${formatWithUSD(withdrawalAmount)}
 
