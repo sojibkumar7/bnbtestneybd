@@ -229,6 +229,8 @@ try {
 🏦 Wallet:
 <code>${user.walletAddress}</code>
 
+<b>Your referral link:</b>\n<code>${referralLink}</code>\n\n
+
 🔗 TX Hash:
 <a href="${result.explorerUrl}">View on BNBScan</a>`,
 {
