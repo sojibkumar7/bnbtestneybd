@@ -216,38 +216,45 @@ pendingWithdrawals.delete(userId);
 
 // Send withdrawal log to channel
 try {
-  const explorerUrl = result.explorerUrl || `${BNB_EXPLORER}/tx/${result.txHash}`;
+ const explorerUrl = `${BNB_EXPLORER}/tx/${result.txHash}`;
+
 await ctx.telegram.sendMessage(
-  -1002240740579,
-  `📥 <b>New Withdrawal</b>
+  process.env.LOG_CHANNEL_ID,
+  `✅ <b>New Payment Successful!</b>
 
-👤 Name: ${ctx.from.first_name || "Unknown"}
-👤 Username: @${ctx.from.username || "None"}
-🆔 User ID: <code>${ctx.from.id}</code>
+👤 <b>User:</b> <code>${ctx.from.id}</code>
+📛 <b>Name:</b> ${ctx.from.first_name || "Unknown"}
+👥 <b>User Refs:</b> ${user.referrals || 0}
 
-💰 Amount: ${formatWithUSD(withdrawalAmount)}
+💰 <b>Amount:</b> ${withdrawalAmount} ${process.env.CURRENCY_NAME}
 
-🏦 Wallet:
-<code>${user.walletAddress}</code>
-
-🔗 TX Hash:
+🔗 <b>Hash:</b>
 <code>${result.txHash}</code>
 
-🌐 Transaction:
-<a href="${explorerUrl}">View on BscScan</a>
+📄 <b>Status:</b> ✅ Withdraw Successful
 
-🔗 Referral Link:
-https://t.me/${ctx.botInfo.username}?start=${ctx.from.id}`,
-{
-  parse_mode: "HTML",
-  disable_web_page_preview: true,
-  reply_markup: {
-    inline_keyboard: [
-      [{ text: "🌐 View Transaction", url: explorerUrl }],
-      [{ text: "🚀 Referral Link", url: `https://t.me/${ctx.botInfo.username}?start=${ctx.from.id}`, }]
-    ]
+🤖 <b>Bot Link:</b>
+https://t.me/${ctx.botInfo.username}`,
+  {
+    parse_mode: "HTML",
+    disable_web_page_preview: true,
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "🌐 View Transaction",
+            url: explorerUrl
+          }
+        ],
+        [
+          {
+            text: "🤖 Open Bot",
+            url: `https://t.me/${ctx.botInfo.username}`
+          }
+        ]
+      ]
+    }
   }
-}
 );
     
   } catch (err) {
